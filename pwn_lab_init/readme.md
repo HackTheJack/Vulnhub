@@ -115,7 +115,7 @@ Proviamo a loggarci con
 
 Perfetto, ci siamo loggati ma notiamo che possiamo caricare solo immagini, quindi dobbiamo trovare il modo di caricare la nostra reverse shell come una immagine.
 # REVERSE SHELL 🔁
-Per caricare la reverse shell, prendiamo il file in php (/usr/share/webshells/php-reverse-shell.php), modifichiamolo con i nostri parametri e aggiungiamo in testa l'header dei file GIF: ```GIF89``` e cambiamo l'estensione in ```.php.gif```  
+Per caricare la reverse shell, prendiamo il file in php (/usr/share/webshells/php-reverse-shell.php), modifichiamolo con i nostri parametri e aggiungiamo in testa l'header dei file GIF: ```GIF89``` e cambiamo l'estensione in ```.gif```  
 Carichiamo la nostra reverse shell modificata e facciamo partire netcat sulla nostra macchina.  
 Sfruttando il browser nella cartella /uploads troviamo il nostro file.  
 Per far esegure la shell caricata sul web server sfruttiamo burpsuite (ma anche curl va bene) eseguendo la seguente GET. (occhio al nome del file che abbiamo caricato nel cookie!)
