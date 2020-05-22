@@ -1,4 +1,5 @@
-PWN_LAB INIT
+# PWN_LAB INIT
+
 
 # NETDISCOVER 👨‍💻
 Prima di tutto eseguiamo un netdiscover per scoprire l'indirizzo ip della macchina 
