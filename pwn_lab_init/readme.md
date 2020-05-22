@@ -46,7 +46,7 @@ Troviamo una pagina di login e una di "upload" dove poter caricare dei dati, ma 
 
 ## LOGIN PAGE 🛠
 
-<!-- qui manca il perché di questa cosa! -->
+* TODO: spiegare il perché di questa scelta
 ```
 curl -s http://10.211.55.17/?page=php://filter/convert.base64-encode/resource=config
 ```
@@ -117,16 +117,16 @@ Proviamo a loggarci con
 Perfetto, ci siamo loggati.
 
 Ora proviamo a caricare la nostra reverse shell. 
-
 Impossibile: possiamo caricare solo immagini, quindi dobbiamo trovare il modo di caricare la nostra reverse shell come una immagine.
 
 
 ## REVERSE SHELL 🔁
-Per caricare la reverse shell, prendiamo il file in php (/usr/share/webshells/php-reverse-shell.php), modifichiamolo con i nostri parametri e aggiungiamo in testa l'header dei file GIF: ```GIF89``` e cambiamo l'estensione in ```.gif```  
-Carichiamo la nostra reverse shell modificata e facciamo partire netcat sulla nostra macchina.  
-Sfruttando il browser nella cartella /uploads troviamo il nostro file.  
-Per far esegure la shell caricata sul web server sfruttiamo burpsuite (ma anche curl va bene) eseguendo la seguente GET. (occhio al nome del file che abbiamo caricato nel cookie!)
-<!-- anche qui manca il perché di questa cosa!-->
+Per caricare la reverse shell, prendiamo il file in php (se usate Kali */usr/share/webshells/php-reverse-shell.php*), modificando  IP e porta con quelli della nostra macchina. Ora aggiungiamo in testa una stringa che rappresenta l'header di un file GIF (`GIF89`) e cambiamo l'estensione in `.gif`.
+Carichiamo la nostra reverse shell modificata e facciamo partire netcat sulla nostra macchina (`nc -lvnp [port]`)
+Il file è correttamente caricato nella cartella **/uploads** del browser.
+Per far esegure la shell caricata sul web server sfruttiamo **burpsuite** (oppure **curl**) eseguendo la seguente GET (**attenzione al nome del file che abbiamo caricato nel cookie!**)
+* TODO: aggiungere il comando curl usato
+* TODO: spiegare il perché di questa scelta
 ```
 GET / HTTP/1.1
 Host: 10.211.55.17
@@ -147,3 +147,4 @@ Connection: close
 <!-- si doveva modificare il comportamento di cat e poi chiamare un eseguibile che potevamo chiamare senza sudo: echo “/bin/sh/” > cat PATH=.:$PATH -->
 
 ## ROOT FLAG 🏴‍☠️
+* TODO
