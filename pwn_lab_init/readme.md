@@ -111,11 +111,17 @@ MySQL [Users]> Select * from users;
 ```
 Anche le password sono codificate in base64.  
 Proviamo a loggarci con  
-* user: kent  
-* password: Sld6WHVCSkpOeQ== (decodificata ->) JWzXuBJJNy  
+* user: `kent`  
+* password: _Sld6WHVCSkpOeQ==_ (decodificata ->) `JWzXuBJJNy`
 
-Perfetto, ci siamo loggati ma notiamo che possiamo caricare solo immagini, quindi dobbiamo trovare il modo di caricare la nostra reverse shell come una immagine.
-# REVERSE SHELL 🔁
+Perfetto, ci siamo loggati.
+
+Ora proviamo a caricare la nostra reverse shell. 
+
+Impossibile: possiamo caricare solo immagini, quindi dobbiamo trovare il modo di caricare la nostra reverse shell come una immagine.
+
+
+## REVERSE SHELL 🔁
 Per caricare la reverse shell, prendiamo il file in php (/usr/share/webshells/php-reverse-shell.php), modifichiamolo con i nostri parametri e aggiungiamo in testa l'header dei file GIF: ```GIF89``` e cambiamo l'estensione in ```.gif```  
 Carichiamo la nostra reverse shell modificata e facciamo partire netcat sulla nostra macchina.  
 Sfruttando il browser nella cartella /uploads troviamo il nostro file.  
@@ -135,6 +141,7 @@ If-None-Match: W/"17c7-5a5e2980343c0"
 If-Modified-Since: Mon, 18 May 2020 02:05:15 GMT
 Connection: close
 ```
+
 ## PRIVILEDGE ESCALATION 💵
 
 <!-- si doveva modificare il comportamento di cat e poi chiamare un eseguibile che potevamo chiamare senza sudo: echo “/bin/sh/” > cat PATH=.:$PATH -->
