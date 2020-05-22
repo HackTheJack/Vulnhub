@@ -126,7 +126,7 @@ Carichiamo la nostra reverse shell modificata e facciamo partire netcat sulla no
 Il file è correttamente caricato nella cartella **/uploads** del browser.
 Per far esegure la shell caricata sul web server sfruttiamo **burpsuite** (oppure **curl**) eseguendo la seguente GET (**attenzione al nome del file che abbiamo caricato nel cookie!**)
 * TODO: aggiungere il comando curl usato
-* TODO: spiegare il perché di questa scelta
+* TODO: spiegare il perché si utilizza il cookie con `lang=...`
 ```
 GET / HTTP/1.1
 Host: 10.211.55.17
