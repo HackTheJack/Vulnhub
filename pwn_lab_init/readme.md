@@ -1,7 +1,7 @@
 # PWN_LAB INIT
 
 
-# NETDISCOVER 👨‍💻
+## NETDISCOVER 👨‍💻
 Prima di tutto eseguiamo un netdiscover per scoprire l'indirizzo ip della macchina 
 ```
 netdiscover 10.211.55.0/24
@@ -16,7 +16,7 @@ IP At MAC Address Count Len MAC Vendor / Hostname
 
 Il primo indirizzo é il nostro (macchina kali), la macchina da attaccare é il secondo ip della lista.
 
-# NMAP 🔍
+## NMAP 🔍
 ```
 nmap -sV -sC 10.211.55.17
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-16 15:02 CEST Nmap scan report for pwnlab-vulnhub.shared (10.211.55.17)
@@ -44,7 +44,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Visto che abbiamo trovato la porta 80 aperta, apriamo un browser e vediamo cosa troviamo.  
 Troviamo una pagina di login e una di "upload" dove poter caricare dei dati, ma solo se loggati.
 
-# LOGIN PAGE 🛠
+## LOGIN PAGE 🛠
 
 <!-- qui manca il perché di questa cosa! -->
 ```
@@ -135,8 +135,8 @@ If-None-Match: W/"17c7-5a5e2980343c0"
 If-Modified-Since: Mon, 18 May 2020 02:05:15 GMT
 Connection: close
 ```
-# PRIVILEDGE ESCALATION 💵
+## PRIVILEDGE ESCALATION 💵
 
 <!-- si doveva modificare il comportamento di cat e poi chiamare un eseguibile che potevamo chiamare senza sudo: echo “/bin/sh/” > cat PATH=.:$PATH -->
 
-# ROOT FLAG 🏴‍☠️
+## ROOT FLAG 🏴‍☠️
