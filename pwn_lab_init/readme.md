@@ -41,12 +41,34 @@ PORT STATE SERVICE VERSION
 |_ Auth Plugin Name: mysql_native_password
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 6.71 seconds
 ```
-Visto che abbiamo trovato la porta 80 aperta, apriamo un browser e vediamo cosa troviamo.  
-Troviamo una pagina di login e una di "upload" dove poter caricare dei dati, ma solo se loggati.
+Nmap ci fornisce due informazioni importanti:
+1. la porta 80 è aperta su un webserver Apache
+2. la porta 3306 è paerta su un database MySQL
+
+Visto che abbiamo trovato la porta _80_ aperta, apriamo l'url in un browser.
+Il sito sembra molto semplice e "fatto in casa".
+La pagina principale è `http://192.168.1.88/index.php`
+Sotto vediamo un format in cui si vedono una sezione **login** e una **upload**.
+* la sezione _login_ presenta un form di accesso
+* la sezione _upload_ permette di caricare file (il che ci fa capire dove potremmo agganciare la nostra _reverse shell_
+
 
 ## LOGIN PAGE 🛠
 
-* TODO: spiegare il perché di questa scelta
+La cosa interessante da notare è che se clicchiamo nella sezione di login ci accorgiamo che non viene caricata una pagina nuova, ma la pagina è _inclusa_ in quella principale (un cosiddetto LFI - _Local FIle Inclusion_).
+Ciò lo possiamo dedurre dal formato dell'url: http://192.168.1.88/**?page=login**
+
+Questo fatto ci indirizza verso un possibile exploit nel lato _php_ ; la pagina principale include le altre in un modo che possiamo ipotizzare con
+
+```php
+include($_GET['page'] . '.php');
+```
+Se proviamo a passare qualsiasi cosa a `page= ` non vi viene restituito nulla.
+Se in un terminale eseguiamo `curl http://192.168.1.88/?page=index` vediamo che abbiamo un loop ricorsivo della pagina di `index`, il che significa proprio che le pagine vengono incluse.
+
+Come possiamo però farci restituire il codice php della pagina ?
+https://www.php.net/manual/en/wrappers.php
+
 ```
 curl -s http://10.211.55.17/?page=php://filter/convert.base64-encode/resource=config
 ```
