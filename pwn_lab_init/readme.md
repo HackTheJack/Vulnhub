@@ -47,8 +47,11 @@ Service detection performed. Please report any incorrect results at https://nmap
 2. la porta `3306` è aperta su un database MySQL
 
 Visto che abbiamo trovato la porta _80_ aperta, apriamo l'url in un browser.
-Il sito sembra molto semplice e "fatto in casa".
-La pagina principale è `http://192.168.1.88/index.php`
+
+Il sito sembra molto semplice e molto spartano.
+
+La pagina principale è `http://192.168.1.88/index.php`.
+
 Sotto vediamo un format in cui si vedono una sezione **login** e una **upload**.
 * la sezione _login_ presenta un form di accesso
 * la sezione _upload_ permette di caricare file (il che ci fa capire dove potremmo agganciare la nostra _reverse shell_
@@ -57,6 +60,7 @@ Sotto vediamo un format in cui si vedono una sezione **login** e una **upload**.
 ## LOGIN PAGE 🛠
 
 La cosa interessante da notare è che se clicchiamo nella sezione di login ci accorgiamo che non viene caricata una pagina nuova, ma la pagina è _inclusa_ in quella principale (un cosiddetto LFI - _Local FIle Inclusion_).
+
 Ciò lo possiamo dedurre dal formato dell'url: http://192.168.1.88/**?page=login**
 
 Questo fatto ci indirizza verso un possibile exploit nel lato _php_ ; la pagina principale include le altre in un modo che possiamo ipotizzare con
@@ -65,9 +69,11 @@ Questo fatto ci indirizza verso un possibile exploit nel lato _php_ ; la pagina 
 include($_GET['page'] . '.php');
 ```
 Se proviamo a passare qualsiasi cosa a `page= ` non vi viene restituito nulla.
+
 Se in un terminale eseguiamo `curl http://192.168.1.88/?page=index` vediamo che abbiamo un loop ricorsivo della pagina di `index`, il che significa proprio che le pagine vengono incluse.
 
 Abbiamo notato però che il codice php è interpretato dalla pagina; ecco perché se invochiamo `curl 'http://192.168.1.88/?page=index.php` vediamo semplicemente l'HTML della pagina ma non la parte php
+
 Come possiamo però farci restituire il codice php delle varie pagine `config.php` `index.php`, etc ?
 
 Una soluzione ci viene fornita grazie ai [*wrappers*](https://www.php.net/manual/en/wrappers.php) _stream php_ , funzioni usate nell'URL per trattare protocolli compatibili con il file system.
@@ -75,7 +81,9 @@ Una soluzione ci viene fornita grazie ai [*wrappers*](https://www.php.net/manual
 * **php://** sembra promettente...
 
 Con il wrapper _php_ possiamo usare la funzione **filter** per filtrare lo stream di dati che arrivano all'applicazione.
+
 Nel nostro caso **non** vogliamo interpretare il codice di `index.php` o `config.php`, in modo da farcelo restituire.
+
 Possiamo utilizzare la funzione `convert.base64-encode`. Mettendo tutto insieme otteniamo
 
 1. index.php
