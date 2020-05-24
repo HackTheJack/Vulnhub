@@ -48,13 +48,13 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 Visto che abbiamo trovato la porta _80_ aperta, apriamo l'url in un browser.
 
-Il sito sembra molto semplice e molto spartano.
+Il sito sembra molto semplice e spartano.
 
 La pagina principale è `http://192.168.1.88/index.php`.
 
-Sotto vediamo un format in cui si vedono una sezione **login** e una **upload**.
+Sotto vediamo un _format_ in cui si vedono una sezione **login** e una **upload**.
 * la sezione _login_ presenta un form di accesso
-* la sezione _upload_ permette di caricare file (il che ci fa capire dove potremmo agganciare la nostra _reverse shell_
+* la sezione _upload_ permette di caricare file (il che ci fa capire dove potremmo agganciare la nostra _reverse shell_)
 
 
 ## LOGIN PAGE 🛠
