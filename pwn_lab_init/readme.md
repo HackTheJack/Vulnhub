@@ -61,7 +61,7 @@ Sotto vediamo un _format_ in cui si vedono una sezione **login** e una **upload*
 
 La cosa interessante da notare è che se clicchiamo nella sezione di login ci accorgiamo che non viene caricata una pagina nuova, ma la pagina è _inclusa_ in quella principale (un cosiddetto LFI - _Local FIle Inclusion_).
 
-Ciò lo possiamo dedurre dal formato dell'url: http://192.168.1.88/**?page=login**
+Ciò lo possiamo dedurre dal formato dell'url: http://192.168.1.88/?page=login
 
 Questo fatto ci indirizza verso un possibile exploit nel lato _php_ ; la pagina principale include le altre in un modo che possiamo ipotizzare con
 
