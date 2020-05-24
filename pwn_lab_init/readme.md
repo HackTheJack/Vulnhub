@@ -259,7 +259,7 @@ If-Modified-Since: Mon, 18 May 2020 02:05:15 GMT
 Connection: close
 ```
 
-## PRIVILEDGE ESCALATION 💵
+## PRIVILEGE ESCALATION 💵
 
 La prima cosa da provare è il comando `su` con le varie credeziali degli utenti trovati nel database MySQL:
 
