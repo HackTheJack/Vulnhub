@@ -19,7 +19,7 @@ Il primo indirizzo è il nostro (macchina kali), la macchina da attaccare é il 
 
 ## NMAP 🔍
 ```
-nmap -sV -sC 10.211.55.17
+nmap -A -T4 -sV -sC 10.211.55.17
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-16 15:02 CEST Nmap scan report for pwnlab-vulnhub.shared (10.211.55.17)
 Host is up (0.00012s latency).
 Not shown: 997 closed ports
