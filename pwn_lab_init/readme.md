@@ -43,8 +43,8 @@ PORT STATE SERVICE VERSION
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 6.71 seconds
 ```
 `nmap` ci fornisce due informazioni importanti:
-1. la porta 80 è aperta su un webserver Apache
-2. la porta 3306 è paerta su un database MySQL
+1. la porta `80` è aperta su un webserver Apache
+2. la porta `3306` è aperta su un database MySQL
 
 Visto che abbiamo trovato la porta _80_ aperta, apriamo l'url in un browser.
 Il sito sembra molto semplice e "fatto in casa".
