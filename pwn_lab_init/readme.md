@@ -2,7 +2,8 @@
 
 
 ## NETDISCOVER 👨‍💻
-Prima di tutto eseguiamo un netdiscover per scoprire l'indirizzo ip della macchina 
+
+Eseguiamo un `netdiscover` per scoprire l'indirizzo ip della macchina 
 ```
 netdiscover 10.211.55.0/24
 Currently scanning: Finished! | Screen View: Unique Hosts
@@ -14,7 +15,7 @@ IP At MAC Address Count Len MAC Vendor / Hostname
 10.211.55.17 00:1c:42:4d:69:40 2 84 Parallels, Inc.
 ```
 
-Il primo indirizzo é il nostro (macchina kali), la macchina da attaccare é il secondo ip della lista.
+Il primo indirizzo è il nostro (macchina kali), la macchina da attaccare é il secondo ip della lista.
 
 ## NMAP 🔍
 ```
@@ -41,7 +42,7 @@ PORT STATE SERVICE VERSION
 |_ Auth Plugin Name: mysql_native_password
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 6.71 seconds
 ```
-Nmap ci fornisce due informazioni importanti:
+`nmap` ci fornisce due informazioni importanti:
 1. la porta 80 è aperta su un webserver Apache
 2. la porta 3306 è paerta su un database MySQL
 
